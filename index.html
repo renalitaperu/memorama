@@ -1,0 +1,83 @@
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1,shrink-to-fit=no">
+        <meta name="description" content="Memorama ">
+        <title>Memorama de Gestion de Almacen</title>
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <main role="main" class="container-fluid" id="app">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center"> Memorama de Almacén</h1>
+                    <p>
+                        <span class="h5">Intentos: </span>
+                        {{intentos}}/{{MAXIMOS_INTENTOS}}&nbsp;<span class="h5">Aciertos:
+                        </span> {{aciertos}}
+                        <br><a @click="mostrarCreditos" href="#">Acerca de</a>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2" class="text-center"><h1 class="text-center"></h1>
+
+                </div>
+                <div class="col-2" class="text-center"><h1 class="text-center">A</h1>
+
+                </div>
+                <div class="col-2" class="text-center"><h1 class="text-center">B</h1>
+
+                </div>
+                <div class="col-3" class="text-center"><h1 class="text-center">C</h1>
+
+                </div>
+                <div class="col-2" class="text-center"><h1 class="text-center">D</h1>
+
+                </div>
+
+            </div>
+               <div class="row">
+                <div class="col-2" class="text-center">
+                 <div class="mb-3">
+                   <h1 class="text-center">1</h1>
+                  </div>
+
+                </div>
+                <div class="col-9" class="text-center">
+
+<div v-for="(fila, indiceFila) in memorama" :key="indiceFila"
+                class="row">
+                <div :key="indiceFila+''+indiceImagen" class="col-3"
+                    v-for="(imagen, indiceImagen) in fila">
+                    <div class="mb-3">
+                        <img @click="voltear(indiceFila, indiceImagen)"
+                            :class="{'girar': imagen.mostrar}"
+                            :src="(imagen.mostrar ? imagen.ruta :
+                            NOMBRE_IMAGEN_OCULTA)" class="card-img-top img-fluid
+                            img-thumbnail">
+                    </div>
+                </div>
+            </div>
+
+                </div>
+  
+
+            </div>          
+            
+        </main>
+        <footer class="px-2 py-2 fixed-bottom bg-success text-white">
+            <span>Programado con ❤️ por
+                <a class="text-white" href="#">Luis Pablo Marcelo Perea</a>
+            </span>
+        </footer>
+        <script src="./js/sweetalert2.all.min.js"></script>
+        <script src="./js/vue.min.js"></script>
+        <script src="./js/script.js"></script>
+    </body>
+
+</html>
